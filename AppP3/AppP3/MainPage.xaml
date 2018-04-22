@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:AppP3"
+             x:Class="AppP3.MainPage">
+    <StackLayout>
+        <Label Text="Detail" />
+        <Entry x:Name="detail" Placeholder="Detail" />
+        <Label Text="Amount" />
+        <Entry x:Name="amount" Placeholder="Amount" />
+        <Label x:Name="messageLabel" Text="" />
+
+        <Image Source="icon.png">
+            <Image.GestureRecognizers>
+                <TapGestureRecognizer
+                Tapped="OnImageNameTapped"
+                NumberOfTapsRequired="1" />
+            </Image.GestureRecognizers>
+        </Image>
+    </StackLayout>
+</ContentPage>

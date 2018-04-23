@@ -17,5 +17,10 @@
                 NumberOfTapsRequired="1" />
             </Image.GestureRecognizers>
         </Image>
+
+        <ListView x:Name="lst" ItemSelected="OnItemSelected"></ListView>
+
     </StackLayout>
+
+
 </ContentPage>

@@ -4,10 +4,50 @@
              x:Class="AppP3.EditPayment">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand"
-                   x:Name="id"/>
+            <Label Text="Editar"/>
+            <Entry x:Name="id" IsVisible="False"/>
+
+            <Label Text="Detail" />
+            <Entry x:Name="detail" Placeholder="Detail" />
+
+            <Label Text="Amount" />
+            <Entry x:Name="amount" Placeholder="Amount" />
+
+            <Label Text="Recurrence" />
+            <Entry x:Name="recurrence" Placeholder="Recurrence: true, false" />
+
+            <Label Text="Recurrence Option" />
+            <Entry x:Name="recurrenciaTypeId" Placeholder="Recurrence Option" />
+
+            <Label Text="Payment date" />
+            <Entry x:Name="paymentDate" Placeholder="Payment date: 01/01/2018" />
+
+            <Label Text="Provider Option" />
+            <Entry x:Name="providerId" Placeholder="Provider Option: 1, 2" />
+
+            <Label Text="Expense Category Option" />
+            <Entry x:Name="expenseCategoryId" Placeholder="Expense Category Option: 1, 2" />
+
+            <Image Source="submit_btn.png">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer
+                        Tapped="OnSubmitData"
+                        NumberOfTapsRequired="1"/> 
+                </Image.GestureRecognizers>
+            </Image>
+
+
+
+            <Image Source="icon.png">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer
+                Tapped="OnSubmitData"
+                NumberOfTapsRequired="1" />
+                </Image.GestureRecognizers>
+            </Image>
+
+
+
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

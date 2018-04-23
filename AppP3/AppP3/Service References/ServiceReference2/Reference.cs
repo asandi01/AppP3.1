@@ -27,6 +27,12 @@ namespace AppP3.ServiceReference2 {
         
         AppP3.ServiceReference2.PaymentRecordModel[] EndGetDetails(System.IAsyncResult result);
         
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/GetDetailsById", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute()]
+        System.IAsyncResult BeginGetDetailsById(int id, System.AsyncCallback callback, object asyncState);
+        
+        AppP3.ServiceReference2.PaymentRecordModel EndGetDetailsById(System.IAsyncResult result);
+        
         [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/UpdateDetails", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute()]
         System.IAsyncResult BeginUpdateDetails(AppP3.ServiceReference2.PaymentRecordModel smodel, System.AsyncCallback callback, object asyncState);
@@ -226,6 +232,25 @@ namespace AppP3.ServiceReference2 {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class GetDetailsByIdCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        public GetDetailsByIdCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        public AppP3.ServiceReference2.PaymentRecordModel Result {
+            get {
+                base.RaiseExceptionIfNecessary();
+                return ((AppP3.ServiceReference2.PaymentRecordModel)(this.results[0]));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     public partial class UpdateDetailsCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
         
         private object[] results;
@@ -277,6 +302,12 @@ namespace AppP3.ServiceReference2 {
         private EndOperationDelegate onEndGetDetailsDelegate;
         
         private System.Threading.SendOrPostCallback onGetDetailsCompletedDelegate;
+        
+        private BeginOperationDelegate onBeginGetDetailsByIdDelegate;
+        
+        private EndOperationDelegate onEndGetDetailsByIdDelegate;
+        
+        private System.Threading.SendOrPostCallback onGetDetailsByIdCompletedDelegate;
         
         private BeginOperationDelegate onBeginUpdateDetailsDelegate;
         
@@ -347,6 +378,8 @@ namespace AppP3.ServiceReference2 {
         public event System.EventHandler<AddCompletedEventArgs> AddCompleted;
         
         public event System.EventHandler<GetDetailsCompletedEventArgs> GetDetailsCompleted;
+        
+        public event System.EventHandler<GetDetailsByIdCompletedEventArgs> GetDetailsByIdCompleted;
         
         public event System.EventHandler<UpdateDetailsCompletedEventArgs> UpdateDetailsCompleted;
         
@@ -444,6 +477,52 @@ namespace AppP3.ServiceReference2 {
                 this.onGetDetailsCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnGetDetailsCompleted);
             }
             base.InvokeAsync(this.onBeginGetDetailsDelegate, null, this.onEndGetDetailsDelegate, this.onGetDetailsCompletedDelegate, userState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.IAsyncResult AppP3.ServiceReference2.PaymentRecordSoap.BeginGetDetailsById(int id, System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginGetDetailsById(id, callback, asyncState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        AppP3.ServiceReference2.PaymentRecordModel AppP3.ServiceReference2.PaymentRecordSoap.EndGetDetailsById(System.IAsyncResult result) {
+            return base.Channel.EndGetDetailsById(result);
+        }
+        
+        private System.IAsyncResult OnBeginGetDetailsById(object[] inValues, System.AsyncCallback callback, object asyncState) {
+            int id = ((int)(inValues[0]));
+            return ((AppP3.ServiceReference2.PaymentRecordSoap)(this)).BeginGetDetailsById(id, callback, asyncState);
+        }
+        
+        private object[] OnEndGetDetailsById(System.IAsyncResult result) {
+            AppP3.ServiceReference2.PaymentRecordModel retVal = ((AppP3.ServiceReference2.PaymentRecordSoap)(this)).EndGetDetailsById(result);
+            return new object[] {
+                    retVal};
+        }
+        
+        private void OnGetDetailsByIdCompleted(object state) {
+            if ((this.GetDetailsByIdCompleted != null)) {
+                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
+                this.GetDetailsByIdCompleted(this, new GetDetailsByIdCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
+            }
+        }
+        
+        public void GetDetailsByIdAsync(int id) {
+            this.GetDetailsByIdAsync(id, null);
+        }
+        
+        public void GetDetailsByIdAsync(int id, object userState) {
+            if ((this.onBeginGetDetailsByIdDelegate == null)) {
+                this.onBeginGetDetailsByIdDelegate = new BeginOperationDelegate(this.OnBeginGetDetailsById);
+            }
+            if ((this.onEndGetDetailsByIdDelegate == null)) {
+                this.onEndGetDetailsByIdDelegate = new EndOperationDelegate(this.OnEndGetDetailsById);
+            }
+            if ((this.onGetDetailsByIdCompletedDelegate == null)) {
+                this.onGetDetailsByIdCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnGetDetailsByIdCompleted);
+            }
+            base.InvokeAsync(this.onBeginGetDetailsByIdDelegate, new object[] {
+                        id}, this.onEndGetDetailsByIdDelegate, this.onGetDetailsByIdCompletedDelegate, userState);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
@@ -661,6 +740,19 @@ namespace AppP3.ServiceReference2 {
             public AppP3.ServiceReference2.PaymentRecordModel[] EndGetDetails(System.IAsyncResult result) {
                 object[] _args = new object[0];
                 AppP3.ServiceReference2.PaymentRecordModel[] _result = ((AppP3.ServiceReference2.PaymentRecordModel[])(base.EndInvoke("GetDetails", _args, result)));
+                return _result;
+            }
+            
+            public System.IAsyncResult BeginGetDetailsById(int id, System.AsyncCallback callback, object asyncState) {
+                object[] _args = new object[1];
+                _args[0] = id;
+                System.IAsyncResult _result = base.BeginInvoke("GetDetailsById", _args, callback, asyncState);
+                return _result;
+            }
+            
+            public AppP3.ServiceReference2.PaymentRecordModel EndGetDetailsById(System.IAsyncResult result) {
+                object[] _args = new object[0];
+                AppP3.ServiceReference2.PaymentRecordModel _result = ((AppP3.ServiceReference2.PaymentRecordModel)(base.EndInvoke("GetDetailsById", _args, result)));
                 return _result;
             }
             

@@ -9,7 +9,14 @@ namespace AppP3 {
     public partial class MainPage : ContentPage {
         public MainPage() {
             InitializeComponent();
-        } 
+            var wsPayment = new ServiceReference2.PaymentRecordSoapClient();
+            wsPayment.GetDetailsAsync();
+            wsPayment.GetDetailsCompleted += wsPaymentCompleted;
+        }
+
+        private void wsPaymentCompleted(object sender, ServiceReference2.GetDetailsCompletedEventArgs e) {
+            var results = e.Result.GetEnumerator();     
+        }
 
 
         Label label;

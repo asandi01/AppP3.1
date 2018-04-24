@@ -9,9 +9,6 @@
             <Label Text="Detail" />
             <Entry x:Name="detail" Placeholder="Detail" />
 
-            <Label Text="Days" />
-            <Entry x:Name="days" Placeholder="Days" Keyboard="Numeric" />
-
             <Image Source="savebutton.png">
                 <Image.GestureRecognizers>
                     <TapGestureRecognizer

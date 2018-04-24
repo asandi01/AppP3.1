@@ -12,12 +12,12 @@ namespace AppP3.ServiceReference1 {
     
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServiceReference1.IncomeRecordSoap")]
-    public interface IncomeRecordSoap {
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServiceReference1.RecurenceTypeSoap")]
+    public interface RecurenceTypeSoap {
         
         [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/Add", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute()]
-        System.IAsyncResult BeginAdd(AppP3.ServiceReference1.IncomeRecordModel smodel, System.AsyncCallback callback, object asyncState);
+        System.IAsyncResult BeginAdd(AppP3.ServiceReference1.RecurenceTypeModel smodel, System.AsyncCallback callback, object asyncState);
         
         bool EndAdd(System.IAsyncResult result);
         
@@ -25,17 +25,17 @@ namespace AppP3.ServiceReference1 {
         [System.ServiceModel.XmlSerializerFormatAttribute()]
         System.IAsyncResult BeginGetDetails(System.AsyncCallback callback, object asyncState);
         
-        AppP3.ServiceReference1.IncomeRecordModel[] EndGetDetails(System.IAsyncResult result);
+        AppP3.ServiceReference1.RecurenceTypeModel[] EndGetDetails(System.IAsyncResult result);
         
         [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/GetDetailsById", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute()]
         System.IAsyncResult BeginGetDetailsById(int id, System.AsyncCallback callback, object asyncState);
         
-        AppP3.ServiceReference1.IncomeRecordModel EndGetDetailsById(System.IAsyncResult result);
+        AppP3.ServiceReference1.RecurenceTypeModel EndGetDetailsById(System.IAsyncResult result);
         
         [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/UpdateDetails", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute()]
-        System.IAsyncResult BeginUpdateDetails(AppP3.ServiceReference1.IncomeRecordModel smodel, System.AsyncCallback callback, object asyncState);
+        System.IAsyncResult BeginUpdateDetails(AppP3.ServiceReference1.RecurenceTypeModel smodel, System.AsyncCallback callback, object asyncState);
         
         bool EndUpdateDetails(System.IAsyncResult result);
         
@@ -50,17 +50,13 @@ namespace AppP3.ServiceReference1 {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2612.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
-    public partial class IncomeRecordModel : object, System.ComponentModel.INotifyPropertyChanged {
+    public partial class RecurenceTypeModel : object, System.ComponentModel.INotifyPropertyChanged {
         
         private int idField;
         
-        private int idUserField;
-        
         private string detailField;
         
-        private double amountField;
-        
-        private System.DateTime paymentDateField;
+        private int daysField;
         
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Order=0)]
@@ -76,18 +72,6 @@ namespace AppP3.ServiceReference1 {
         
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Order=1)]
-        public int idUser {
-            get {
-                return this.idUserField;
-            }
-            set {
-                this.idUserField = value;
-                this.RaisePropertyChanged("idUser");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=2)]
         public string detail {
             get {
                 return this.detailField;
@@ -99,26 +83,14 @@ namespace AppP3.ServiceReference1 {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=3)]
-        public double amount {
+        [System.Xml.Serialization.XmlElementAttribute(Order=2)]
+        public int days {
             get {
-                return this.amountField;
+                return this.daysField;
             }
             set {
-                this.amountField = value;
-                this.RaisePropertyChanged("amount");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=4)]
-        public System.DateTime paymentDate {
-            get {
-                return this.paymentDateField;
-            }
-            set {
-                this.paymentDateField = value;
-                this.RaisePropertyChanged("paymentDate");
+                this.daysField = value;
+                this.RaisePropertyChanged("days");
             }
         }
         
@@ -133,7 +105,7 @@ namespace AppP3.ServiceReference1 {
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public interface IncomeRecordSoapChannel : AppP3.ServiceReference1.IncomeRecordSoap, System.ServiceModel.IClientChannel {
+    public interface RecurenceTypeSoapChannel : AppP3.ServiceReference1.RecurenceTypeSoap, System.ServiceModel.IClientChannel {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
@@ -166,10 +138,10 @@ namespace AppP3.ServiceReference1 {
             this.results = results;
         }
         
-        public AppP3.ServiceReference1.IncomeRecordModel[] Result {
+        public AppP3.ServiceReference1.RecurenceTypeModel[] Result {
             get {
                 base.RaiseExceptionIfNecessary();
-                return ((AppP3.ServiceReference1.IncomeRecordModel[])(this.results[0]));
+                return ((AppP3.ServiceReference1.RecurenceTypeModel[])(this.results[0]));
             }
         }
     }
@@ -185,10 +157,10 @@ namespace AppP3.ServiceReference1 {
             this.results = results;
         }
         
-        public AppP3.ServiceReference1.IncomeRecordModel Result {
+        public AppP3.ServiceReference1.RecurenceTypeModel Result {
             get {
                 base.RaiseExceptionIfNecessary();
-                return ((AppP3.ServiceReference1.IncomeRecordModel)(this.results[0]));
+                return ((AppP3.ServiceReference1.RecurenceTypeModel)(this.results[0]));
             }
         }
     }
@@ -233,7 +205,7 @@ namespace AppP3.ServiceReference1 {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class IncomeRecordSoapClient : System.ServiceModel.ClientBase<AppP3.ServiceReference1.IncomeRecordSoap>, AppP3.ServiceReference1.IncomeRecordSoap {
+    public partial class RecurenceTypeSoapClient : System.ServiceModel.ClientBase<AppP3.ServiceReference1.RecurenceTypeSoap>, AppP3.ServiceReference1.RecurenceTypeSoap {
         
         private BeginOperationDelegate onBeginAddDelegate;
         
@@ -277,23 +249,23 @@ namespace AppP3.ServiceReference1 {
         
         private System.Threading.SendOrPostCallback onCloseCompletedDelegate;
         
-        public IncomeRecordSoapClient() : 
-                base(IncomeRecordSoapClient.GetDefaultBinding(), IncomeRecordSoapClient.GetDefaultEndpointAddress()) {
+        public RecurenceTypeSoapClient() : 
+                base(RecurenceTypeSoapClient.GetDefaultBinding(), RecurenceTypeSoapClient.GetDefaultEndpointAddress()) {
         }
         
-        public IncomeRecordSoapClient(EndpointConfiguration endpointConfiguration) : 
-                base(IncomeRecordSoapClient.GetBindingForEndpoint(endpointConfiguration), IncomeRecordSoapClient.GetEndpointAddress(endpointConfiguration)) {
+        public RecurenceTypeSoapClient(EndpointConfiguration endpointConfiguration) : 
+                base(RecurenceTypeSoapClient.GetBindingForEndpoint(endpointConfiguration), RecurenceTypeSoapClient.GetEndpointAddress(endpointConfiguration)) {
         }
         
-        public IncomeRecordSoapClient(EndpointConfiguration endpointConfiguration, string remoteAddress) : 
-                base(IncomeRecordSoapClient.GetBindingForEndpoint(endpointConfiguration), new System.ServiceModel.EndpointAddress(remoteAddress)) {
+        public RecurenceTypeSoapClient(EndpointConfiguration endpointConfiguration, string remoteAddress) : 
+                base(RecurenceTypeSoapClient.GetBindingForEndpoint(endpointConfiguration), new System.ServiceModel.EndpointAddress(remoteAddress)) {
         }
         
-        public IncomeRecordSoapClient(EndpointConfiguration endpointConfiguration, System.ServiceModel.EndpointAddress remoteAddress) : 
-                base(IncomeRecordSoapClient.GetBindingForEndpoint(endpointConfiguration), remoteAddress) {
+        public RecurenceTypeSoapClient(EndpointConfiguration endpointConfiguration, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(RecurenceTypeSoapClient.GetBindingForEndpoint(endpointConfiguration), remoteAddress) {
         }
         
-        public IncomeRecordSoapClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
+        public RecurenceTypeSoapClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
                 base(binding, remoteAddress) {
         }
         
@@ -334,22 +306,22 @@ namespace AppP3.ServiceReference1 {
         public event System.EventHandler<System.ComponentModel.AsyncCompletedEventArgs> CloseCompleted;
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.IAsyncResult AppP3.ServiceReference1.IncomeRecordSoap.BeginAdd(AppP3.ServiceReference1.IncomeRecordModel smodel, System.AsyncCallback callback, object asyncState) {
+        System.IAsyncResult AppP3.ServiceReference1.RecurenceTypeSoap.BeginAdd(AppP3.ServiceReference1.RecurenceTypeModel smodel, System.AsyncCallback callback, object asyncState) {
             return base.Channel.BeginAdd(smodel, callback, asyncState);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        bool AppP3.ServiceReference1.IncomeRecordSoap.EndAdd(System.IAsyncResult result) {
+        bool AppP3.ServiceReference1.RecurenceTypeSoap.EndAdd(System.IAsyncResult result) {
             return base.Channel.EndAdd(result);
         }
         
         private System.IAsyncResult OnBeginAdd(object[] inValues, System.AsyncCallback callback, object asyncState) {
-            AppP3.ServiceReference1.IncomeRecordModel smodel = ((AppP3.ServiceReference1.IncomeRecordModel)(inValues[0]));
-            return ((AppP3.ServiceReference1.IncomeRecordSoap)(this)).BeginAdd(smodel, callback, asyncState);
+            AppP3.ServiceReference1.RecurenceTypeModel smodel = ((AppP3.ServiceReference1.RecurenceTypeModel)(inValues[0]));
+            return ((AppP3.ServiceReference1.RecurenceTypeSoap)(this)).BeginAdd(smodel, callback, asyncState);
         }
         
         private object[] OnEndAdd(System.IAsyncResult result) {
-            bool retVal = ((AppP3.ServiceReference1.IncomeRecordSoap)(this)).EndAdd(result);
+            bool retVal = ((AppP3.ServiceReference1.RecurenceTypeSoap)(this)).EndAdd(result);
             return new object[] {
                     retVal};
         }
@@ -361,11 +333,11 @@ namespace AppP3.ServiceReference1 {
             }
         }
         
-        public void AddAsync(AppP3.ServiceReference1.IncomeRecordModel smodel) {
+        public void AddAsync(AppP3.ServiceReference1.RecurenceTypeModel smodel) {
             this.AddAsync(smodel, null);
         }
         
-        public void AddAsync(AppP3.ServiceReference1.IncomeRecordModel smodel, object userState) {
+        public void AddAsync(AppP3.ServiceReference1.RecurenceTypeModel smodel, object userState) {
             if ((this.onBeginAddDelegate == null)) {
                 this.onBeginAddDelegate = new BeginOperationDelegate(this.OnBeginAdd);
             }
@@ -380,21 +352,21 @@ namespace AppP3.ServiceReference1 {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.IAsyncResult AppP3.ServiceReference1.IncomeRecordSoap.BeginGetDetails(System.AsyncCallback callback, object asyncState) {
+        System.IAsyncResult AppP3.ServiceReference1.RecurenceTypeSoap.BeginGetDetails(System.AsyncCallback callback, object asyncState) {
             return base.Channel.BeginGetDetails(callback, asyncState);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        AppP3.ServiceReference1.IncomeRecordModel[] AppP3.ServiceReference1.IncomeRecordSoap.EndGetDetails(System.IAsyncResult result) {
+        AppP3.ServiceReference1.RecurenceTypeModel[] AppP3.ServiceReference1.RecurenceTypeSoap.EndGetDetails(System.IAsyncResult result) {
             return base.Channel.EndGetDetails(result);
         }
         
         private System.IAsyncResult OnBeginGetDetails(object[] inValues, System.AsyncCallback callback, object asyncState) {
-            return ((AppP3.ServiceReference1.IncomeRecordSoap)(this)).BeginGetDetails(callback, asyncState);
+            return ((AppP3.ServiceReference1.RecurenceTypeSoap)(this)).BeginGetDetails(callback, asyncState);
         }
         
         private object[] OnEndGetDetails(System.IAsyncResult result) {
-            AppP3.ServiceReference1.IncomeRecordModel[] retVal = ((AppP3.ServiceReference1.IncomeRecordSoap)(this)).EndGetDetails(result);
+            AppP3.ServiceReference1.RecurenceTypeModel[] retVal = ((AppP3.ServiceReference1.RecurenceTypeSoap)(this)).EndGetDetails(result);
             return new object[] {
                     retVal};
         }
@@ -424,22 +396,22 @@ namespace AppP3.ServiceReference1 {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.IAsyncResult AppP3.ServiceReference1.IncomeRecordSoap.BeginGetDetailsById(int id, System.AsyncCallback callback, object asyncState) {
+        System.IAsyncResult AppP3.ServiceReference1.RecurenceTypeSoap.BeginGetDetailsById(int id, System.AsyncCallback callback, object asyncState) {
             return base.Channel.BeginGetDetailsById(id, callback, asyncState);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        AppP3.ServiceReference1.IncomeRecordModel AppP3.ServiceReference1.IncomeRecordSoap.EndGetDetailsById(System.IAsyncResult result) {
+        AppP3.ServiceReference1.RecurenceTypeModel AppP3.ServiceReference1.RecurenceTypeSoap.EndGetDetailsById(System.IAsyncResult result) {
             return base.Channel.EndGetDetailsById(result);
         }
         
         private System.IAsyncResult OnBeginGetDetailsById(object[] inValues, System.AsyncCallback callback, object asyncState) {
             int id = ((int)(inValues[0]));
-            return ((AppP3.ServiceReference1.IncomeRecordSoap)(this)).BeginGetDetailsById(id, callback, asyncState);
+            return ((AppP3.ServiceReference1.RecurenceTypeSoap)(this)).BeginGetDetailsById(id, callback, asyncState);
         }
         
         private object[] OnEndGetDetailsById(System.IAsyncResult result) {
-            AppP3.ServiceReference1.IncomeRecordModel retVal = ((AppP3.ServiceReference1.IncomeRecordSoap)(this)).EndGetDetailsById(result);
+            AppP3.ServiceReference1.RecurenceTypeModel retVal = ((AppP3.ServiceReference1.RecurenceTypeSoap)(this)).EndGetDetailsById(result);
             return new object[] {
                     retVal};
         }
@@ -470,22 +442,22 @@ namespace AppP3.ServiceReference1 {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.IAsyncResult AppP3.ServiceReference1.IncomeRecordSoap.BeginUpdateDetails(AppP3.ServiceReference1.IncomeRecordModel smodel, System.AsyncCallback callback, object asyncState) {
+        System.IAsyncResult AppP3.ServiceReference1.RecurenceTypeSoap.BeginUpdateDetails(AppP3.ServiceReference1.RecurenceTypeModel smodel, System.AsyncCallback callback, object asyncState) {
             return base.Channel.BeginUpdateDetails(smodel, callback, asyncState);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        bool AppP3.ServiceReference1.IncomeRecordSoap.EndUpdateDetails(System.IAsyncResult result) {
+        bool AppP3.ServiceReference1.RecurenceTypeSoap.EndUpdateDetails(System.IAsyncResult result) {
             return base.Channel.EndUpdateDetails(result);
         }
         
         private System.IAsyncResult OnBeginUpdateDetails(object[] inValues, System.AsyncCallback callback, object asyncState) {
-            AppP3.ServiceReference1.IncomeRecordModel smodel = ((AppP3.ServiceReference1.IncomeRecordModel)(inValues[0]));
-            return ((AppP3.ServiceReference1.IncomeRecordSoap)(this)).BeginUpdateDetails(smodel, callback, asyncState);
+            AppP3.ServiceReference1.RecurenceTypeModel smodel = ((AppP3.ServiceReference1.RecurenceTypeModel)(inValues[0]));
+            return ((AppP3.ServiceReference1.RecurenceTypeSoap)(this)).BeginUpdateDetails(smodel, callback, asyncState);
         }
         
         private object[] OnEndUpdateDetails(System.IAsyncResult result) {
-            bool retVal = ((AppP3.ServiceReference1.IncomeRecordSoap)(this)).EndUpdateDetails(result);
+            bool retVal = ((AppP3.ServiceReference1.RecurenceTypeSoap)(this)).EndUpdateDetails(result);
             return new object[] {
                     retVal};
         }
@@ -497,11 +469,11 @@ namespace AppP3.ServiceReference1 {
             }
         }
         
-        public void UpdateDetailsAsync(AppP3.ServiceReference1.IncomeRecordModel smodel) {
+        public void UpdateDetailsAsync(AppP3.ServiceReference1.RecurenceTypeModel smodel) {
             this.UpdateDetailsAsync(smodel, null);
         }
         
-        public void UpdateDetailsAsync(AppP3.ServiceReference1.IncomeRecordModel smodel, object userState) {
+        public void UpdateDetailsAsync(AppP3.ServiceReference1.RecurenceTypeModel smodel, object userState) {
             if ((this.onBeginUpdateDetailsDelegate == null)) {
                 this.onBeginUpdateDetailsDelegate = new BeginOperationDelegate(this.OnBeginUpdateDetails);
             }
@@ -516,22 +488,22 @@ namespace AppP3.ServiceReference1 {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.IAsyncResult AppP3.ServiceReference1.IncomeRecordSoap.BeginDelete(int id, System.AsyncCallback callback, object asyncState) {
+        System.IAsyncResult AppP3.ServiceReference1.RecurenceTypeSoap.BeginDelete(int id, System.AsyncCallback callback, object asyncState) {
             return base.Channel.BeginDelete(id, callback, asyncState);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        bool AppP3.ServiceReference1.IncomeRecordSoap.EndDelete(System.IAsyncResult result) {
+        bool AppP3.ServiceReference1.RecurenceTypeSoap.EndDelete(System.IAsyncResult result) {
             return base.Channel.EndDelete(result);
         }
         
         private System.IAsyncResult OnBeginDelete(object[] inValues, System.AsyncCallback callback, object asyncState) {
             int id = ((int)(inValues[0]));
-            return ((AppP3.ServiceReference1.IncomeRecordSoap)(this)).BeginDelete(id, callback, asyncState);
+            return ((AppP3.ServiceReference1.RecurenceTypeSoap)(this)).BeginDelete(id, callback, asyncState);
         }
         
         private object[] OnEndDelete(System.IAsyncResult result) {
-            bool retVal = ((AppP3.ServiceReference1.IncomeRecordSoap)(this)).EndDelete(result);
+            bool retVal = ((AppP3.ServiceReference1.RecurenceTypeSoap)(this)).EndDelete(result);
             return new object[] {
                     retVal};
         }
@@ -627,12 +599,12 @@ namespace AppP3.ServiceReference1 {
             base.InvokeAsync(this.onBeginCloseDelegate, null, this.onEndCloseDelegate, this.onCloseCompletedDelegate, userState);
         }
         
-        protected override AppP3.ServiceReference1.IncomeRecordSoap CreateChannel() {
-            return new IncomeRecordSoapClientChannel(this);
+        protected override AppP3.ServiceReference1.RecurenceTypeSoap CreateChannel() {
+            return new RecurenceTypeSoapClientChannel(this);
         }
         
         private static System.ServiceModel.Channels.Binding GetBindingForEndpoint(EndpointConfiguration endpointConfiguration) {
-            if ((endpointConfiguration == EndpointConfiguration.IncomeRecordSoap)) {
+            if ((endpointConfiguration == EndpointConfiguration.RecurenceTypeSoap)) {
                 System.ServiceModel.BasicHttpBinding result = new System.ServiceModel.BasicHttpBinding();
                 result.MaxBufferSize = int.MaxValue;
                 result.MaxReceivedMessageSize = int.MaxValue;
@@ -642,27 +614,27 @@ namespace AppP3.ServiceReference1 {
         }
         
         private static System.ServiceModel.EndpointAddress GetEndpointAddress(EndpointConfiguration endpointConfiguration) {
-            if ((endpointConfiguration == EndpointConfiguration.IncomeRecordSoap)) {
-                return new System.ServiceModel.EndpointAddress("http://pj1ws.azurewebsites.net/IncomeRecord.asmx");
+            if ((endpointConfiguration == EndpointConfiguration.RecurenceTypeSoap)) {
+                return new System.ServiceModel.EndpointAddress("http://pj1ws.azurewebsites.net/RecurenceType.asmx");
             }
             throw new System.InvalidOperationException(string.Format("Could not find endpoint with name \'{0}\'.", endpointConfiguration));
         }
         
         private static System.ServiceModel.Channels.Binding GetDefaultBinding() {
-            return IncomeRecordSoapClient.GetBindingForEndpoint(EndpointConfiguration.IncomeRecordSoap);
+            return RecurenceTypeSoapClient.GetBindingForEndpoint(EndpointConfiguration.RecurenceTypeSoap);
         }
         
         private static System.ServiceModel.EndpointAddress GetDefaultEndpointAddress() {
-            return IncomeRecordSoapClient.GetEndpointAddress(EndpointConfiguration.IncomeRecordSoap);
+            return RecurenceTypeSoapClient.GetEndpointAddress(EndpointConfiguration.RecurenceTypeSoap);
         }
         
-        private class IncomeRecordSoapClientChannel : ChannelBase<AppP3.ServiceReference1.IncomeRecordSoap>, AppP3.ServiceReference1.IncomeRecordSoap {
+        private class RecurenceTypeSoapClientChannel : ChannelBase<AppP3.ServiceReference1.RecurenceTypeSoap>, AppP3.ServiceReference1.RecurenceTypeSoap {
             
-            public IncomeRecordSoapClientChannel(System.ServiceModel.ClientBase<AppP3.ServiceReference1.IncomeRecordSoap> client) : 
+            public RecurenceTypeSoapClientChannel(System.ServiceModel.ClientBase<AppP3.ServiceReference1.RecurenceTypeSoap> client) : 
                     base(client) {
             }
             
-            public System.IAsyncResult BeginAdd(AppP3.ServiceReference1.IncomeRecordModel smodel, System.AsyncCallback callback, object asyncState) {
+            public System.IAsyncResult BeginAdd(AppP3.ServiceReference1.RecurenceTypeModel smodel, System.AsyncCallback callback, object asyncState) {
                 object[] _args = new object[1];
                 _args[0] = smodel;
                 System.IAsyncResult _result = base.BeginInvoke("Add", _args, callback, asyncState);
@@ -681,9 +653,9 @@ namespace AppP3.ServiceReference1 {
                 return _result;
             }
             
-            public AppP3.ServiceReference1.IncomeRecordModel[] EndGetDetails(System.IAsyncResult result) {
+            public AppP3.ServiceReference1.RecurenceTypeModel[] EndGetDetails(System.IAsyncResult result) {
                 object[] _args = new object[0];
-                AppP3.ServiceReference1.IncomeRecordModel[] _result = ((AppP3.ServiceReference1.IncomeRecordModel[])(base.EndInvoke("GetDetails", _args, result)));
+                AppP3.ServiceReference1.RecurenceTypeModel[] _result = ((AppP3.ServiceReference1.RecurenceTypeModel[])(base.EndInvoke("GetDetails", _args, result)));
                 return _result;
             }
             
@@ -694,13 +666,13 @@ namespace AppP3.ServiceReference1 {
                 return _result;
             }
             
-            public AppP3.ServiceReference1.IncomeRecordModel EndGetDetailsById(System.IAsyncResult result) {
+            public AppP3.ServiceReference1.RecurenceTypeModel EndGetDetailsById(System.IAsyncResult result) {
                 object[] _args = new object[0];
-                AppP3.ServiceReference1.IncomeRecordModel _result = ((AppP3.ServiceReference1.IncomeRecordModel)(base.EndInvoke("GetDetailsById", _args, result)));
+                AppP3.ServiceReference1.RecurenceTypeModel _result = ((AppP3.ServiceReference1.RecurenceTypeModel)(base.EndInvoke("GetDetailsById", _args, result)));
                 return _result;
             }
             
-            public System.IAsyncResult BeginUpdateDetails(AppP3.ServiceReference1.IncomeRecordModel smodel, System.AsyncCallback callback, object asyncState) {
+            public System.IAsyncResult BeginUpdateDetails(AppP3.ServiceReference1.RecurenceTypeModel smodel, System.AsyncCallback callback, object asyncState) {
                 object[] _args = new object[1];
                 _args[0] = smodel;
                 System.IAsyncResult _result = base.BeginInvoke("UpdateDetails", _args, callback, asyncState);
@@ -729,7 +701,7 @@ namespace AppP3.ServiceReference1 {
         
         public enum EndpointConfiguration {
             
-            IncomeRecordSoap,
+            RecurenceTypeSoap,
         }
     }
 }

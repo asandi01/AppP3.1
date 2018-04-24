@@ -27,7 +27,7 @@
         <Image Source="salary.png">
             <Image.GestureRecognizers>
                 <TapGestureRecognizer
-                Tapped="OnImagePayment"
+                Tapped="OnImageIncome"
                 NumberOfTapsRequired="1" />
             </Image.GestureRecognizers>
         </Image>

@@ -40,7 +40,7 @@ namespace AppP3 {
         }
 
         async void OnAddPayment(object sender, SelectedItemChangedEventArgs e) {
-            await Navigation.PushModalAsync(new AddPayment());
+            await Navigation.PushModalAsync(new IncomeRecordAdd());
         }
 
     }

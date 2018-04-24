@@ -35,12 +35,24 @@ namespace AppP3 {
 
                 payment.id = Int32.Parse(id.Text);
                 payment.detail = detail.Text;
-                payment.amount = Double.Parse(amount.Text);                        
-                payment.paymentDate = DateTime.Parse(paymentDate.Text);           
+                payment.amount = Double.Parse(amount.Text);
 
-                var wsPayment = new ServiceReference3.IncomeRecordSoapClient();
-                wsPayment.UpdateDetailsAsync(payment);
-                wsPayment.UpdateDetailsCompleted += wsPaymentUpdateCompleted; 
+                bool send = true;
+                DateTime temp;
+                if (DateTime.TryParse(paymentDate.Text, out temp)) {
+                    payment.paymentDate = DateTime.Parse(paymentDate.Text);
+                } else {
+                    send = false;
+                    Device.BeginInvokeOnMainThread(() => {
+                        DisplayAlert("Error", "Error de fecha", "Ok");
+                    });
+                }
+
+                if (send) { 
+                    var wsPayment = new ServiceReference3.IncomeRecordSoapClient();
+                    wsPayment.UpdateDetailsAsync(payment);
+                    wsPayment.UpdateDetailsCompleted += wsPaymentUpdateCompleted;
+                }
 
             } catch (Exception ex) {
                 throw ex;

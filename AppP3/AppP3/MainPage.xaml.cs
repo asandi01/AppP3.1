@@ -12,13 +12,16 @@ namespace AppP3 {
             paymentImage.Source = "/images/payment.png";
         }
                   
-        /*async void OnPayment(object sender, SelectedItemChangedEventArgs e) {       
-            await Navigation.PushModalAsync(new PaymentRecordList());
-        } */
-
         void OnImagePayment(object sender, EventArgs args) {
             try {
                 Navigation.PushModalAsync(new PaymentRecordList());
+            } catch (Exception ex) {
+                throw ex;
+            }
+        }
+        void OnImageIncome(object sender, EventArgs args) {
+            try {
+                Navigation.PushModalAsync(new IncomeRecordList());
             } catch (Exception ex) {
                 throw ex;
             }

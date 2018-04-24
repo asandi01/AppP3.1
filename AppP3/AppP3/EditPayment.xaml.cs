@@ -20,8 +20,7 @@ namespace AppP3 {
             wsPayment.GetDetailsByIdAsync(idSelected);
             wsPayment.GetDetailsByIdCompleted += wsPaymentCompleted;
         }
-
-
+              
         private async void wsPaymentCompleted(object sender, ServiceReference2.GetDetailsByIdCompletedEventArgs e) {
             var payment = e.Result;
             Device.BeginInvokeOnMainThread(() => {
@@ -34,8 +33,7 @@ namespace AppP3 {
                 expenseCategoryId.Text = payment.expenseCategoryId.ToString();
             });
         }
-
-
+             
         async void OnSubmitData(object sender, EventArgs args) {
             try {
 
@@ -45,15 +43,26 @@ namespace AppP3 {
                 payment.detail = detail.Text;
                 payment.amount = Double.Parse(amount.Text);
                 payment.recurrence = Boolean.Parse(recurrence.Text);
-                payment.recurrenciaTypeId = Int32.Parse(recurrenciaTypeId.Text);
-                payment.paymentDate = DateTime.Parse(paymentDate.Text);
+                payment.recurrenciaTypeId = Int32.Parse(recurrenciaTypeId.Text);   
                 payment.providerId = Int32.Parse(providerId.Text);
                 payment.expenseCategoryId = Int32.Parse(expenseCategoryId.Text);
 
+                bool send = true;
+                DateTime temp;
+                if (DateTime.TryParse(paymentDate.Text, out temp)) {
+                    payment.paymentDate = DateTime.Parse(paymentDate.Text);
+                } else {
+                    send = false;
+                    Device.BeginInvokeOnMainThread(() => {
+                        DisplayAlert("Error", "Error de fecha", "Ok");
+                    });
+                }
 
-                var wsPayment = new ServiceReference2.PaymentRecordSoapClient();
-                wsPayment.UpdateDetailsAsync(payment);
-                wsPayment.UpdateDetailsCompleted += wsPaymentUpdateCompleted;
+                if (send) { 
+                    var wsPayment = new ServiceReference2.PaymentRecordSoapClient();
+                    wsPayment.UpdateDetailsAsync(payment);
+                    wsPayment.UpdateDetailsCompleted += wsPaymentUpdateCompleted;
+                }
 
             } catch (Exception ex) {
                 throw ex;

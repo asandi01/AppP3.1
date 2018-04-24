@@ -22,15 +22,26 @@ namespace AppP3 {
                 payment.detail = detail.Text;
                 payment.amount = Double.Parse(amount.Text);
                 payment.recurrence = Boolean.Parse(recurrence.Text);
-                payment.recurrenciaTypeId = Int32.Parse(recurrenciaTypeId.Text);
-                payment.paymentDate = DateTime.Parse(paymentDate.Text);
+                payment.recurrenciaTypeId = Int32.Parse(recurrenciaTypeId.Text); 
                 payment.providerId = Int32.Parse(providerId.Text);
                 payment.expenseCategoryId = Int32.Parse(expenseCategoryId.Text);
+                                 
+                bool send = true;
+                DateTime temp;
+                if (DateTime.TryParse(paymentDate.Text, out temp)) {
+                    payment.paymentDate = DateTime.Parse(paymentDate.Text);
+                } else {
+                    send = false;
+                    Device.BeginInvokeOnMainThread(() => {
+                        DisplayAlert("Error", "Error de fecha", "Ok");
+                    });
+                }
 
-
-                var wsPayment = new ServiceReference2.PaymentRecordSoapClient();     
-                wsPayment.AddAsync(payment);
-                wsPayment.AddCompleted += wsPaymentAddCompleted;
+                if (send) {  
+                    var wsPayment = new ServiceReference2.PaymentRecordSoapClient();
+                    wsPayment.AddAsync(payment);
+                    wsPayment.AddCompleted += wsPaymentAddCompleted;
+                }
 
             } catch (Exception ex) {
                 throw ex;

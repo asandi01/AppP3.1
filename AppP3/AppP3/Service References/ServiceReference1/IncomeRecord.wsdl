@@ -1,0 +1,372 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="Add">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="smodel" type="tns:IncomeRecordModel" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="IncomeRecordModel">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="id" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="idUser" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="detail" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="amount" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="paymentDate" type="s:dateTime" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="AddResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="AddResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetDetails">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetDetailsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetDetailsResult" type="tns:ArrayOfIncomeRecordModel" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfIncomeRecordModel">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="IncomeRecordModel" nillable="true" type="tns:IncomeRecordModel" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetDetailsById">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="id" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetDetailsByIdResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetDetailsByIdResult" type="tns:IncomeRecordModel" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateDetails">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="smodel" type="tns:IncomeRecordModel" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateDetailsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="UpdateDetailsResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Delete">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="id" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="DeleteResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ArrayOfIncomeRecordModel" nillable="true" type="tns:ArrayOfIncomeRecordModel" />
+      <s:element name="IncomeRecordModel" nillable="true" type="tns:IncomeRecordModel" />
+      <s:element name="boolean" type="s:boolean" />
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="AddSoapIn">
+    <wsdl:part name="parameters" element="tns:Add" />
+  </wsdl:message>
+  <wsdl:message name="AddSoapOut">
+    <wsdl:part name="parameters" element="tns:AddResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetDetailsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetDetails" />
+  </wsdl:message>
+  <wsdl:message name="GetDetailsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetDetailsResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetDetailsByIdSoapIn">
+    <wsdl:part name="parameters" element="tns:GetDetailsById" />
+  </wsdl:message>
+  <wsdl:message name="GetDetailsByIdSoapOut">
+    <wsdl:part name="parameters" element="tns:GetDetailsByIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateDetailsSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateDetails" />
+  </wsdl:message>
+  <wsdl:message name="UpdateDetailsSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateDetailsResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeleteSoapIn">
+    <wsdl:part name="parameters" element="tns:Delete" />
+  </wsdl:message>
+  <wsdl:message name="DeleteSoapOut">
+    <wsdl:part name="parameters" element="tns:DeleteResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetDetailsHttpGetIn" />
+  <wsdl:message name="GetDetailsHttpGetOut">
+    <wsdl:part name="Body" element="tns:ArrayOfIncomeRecordModel" />
+  </wsdl:message>
+  <wsdl:message name="GetDetailsByIdHttpGetIn">
+    <wsdl:part name="id" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetDetailsByIdHttpGetOut">
+    <wsdl:part name="Body" element="tns:IncomeRecordModel" />
+  </wsdl:message>
+  <wsdl:message name="DeleteHttpGetIn">
+    <wsdl:part name="id" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="DeleteHttpGetOut">
+    <wsdl:part name="Body" element="tns:boolean" />
+  </wsdl:message>
+  <wsdl:message name="GetDetailsHttpPostIn" />
+  <wsdl:message name="GetDetailsHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfIncomeRecordModel" />
+  </wsdl:message>
+  <wsdl:message name="GetDetailsByIdHttpPostIn">
+    <wsdl:part name="id" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetDetailsByIdHttpPostOut">
+    <wsdl:part name="Body" element="tns:IncomeRecordModel" />
+  </wsdl:message>
+  <wsdl:message name="DeleteHttpPostIn">
+    <wsdl:part name="id" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="DeleteHttpPostOut">
+    <wsdl:part name="Body" element="tns:boolean" />
+  </wsdl:message>
+  <wsdl:portType name="IncomeRecordSoap">
+    <wsdl:operation name="Add">
+      <wsdl:input message="tns:AddSoapIn" />
+      <wsdl:output message="tns:AddSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDetails">
+      <wsdl:input message="tns:GetDetailsSoapIn" />
+      <wsdl:output message="tns:GetDetailsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDetailsById">
+      <wsdl:input message="tns:GetDetailsByIdSoapIn" />
+      <wsdl:output message="tns:GetDetailsByIdSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateDetails">
+      <wsdl:input message="tns:UpdateDetailsSoapIn" />
+      <wsdl:output message="tns:UpdateDetailsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Delete">
+      <wsdl:input message="tns:DeleteSoapIn" />
+      <wsdl:output message="tns:DeleteSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="IncomeRecordHttpGet">
+    <wsdl:operation name="GetDetails">
+      <wsdl:input message="tns:GetDetailsHttpGetIn" />
+      <wsdl:output message="tns:GetDetailsHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDetailsById">
+      <wsdl:input message="tns:GetDetailsByIdHttpGetIn" />
+      <wsdl:output message="tns:GetDetailsByIdHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Delete">
+      <wsdl:input message="tns:DeleteHttpGetIn" />
+      <wsdl:output message="tns:DeleteHttpGetOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="IncomeRecordHttpPost">
+    <wsdl:operation name="GetDetails">
+      <wsdl:input message="tns:GetDetailsHttpPostIn" />
+      <wsdl:output message="tns:GetDetailsHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDetailsById">
+      <wsdl:input message="tns:GetDetailsByIdHttpPostIn" />
+      <wsdl:output message="tns:GetDetailsByIdHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Delete">
+      <wsdl:input message="tns:DeleteHttpPostIn" />
+      <wsdl:output message="tns:DeleteHttpPostOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="IncomeRecordSoap" type="tns:IncomeRecordSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Add">
+      <soap:operation soapAction="http://tempuri.org/Add" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDetails">
+      <soap:operation soapAction="http://tempuri.org/GetDetails" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDetailsById">
+      <soap:operation soapAction="http://tempuri.org/GetDetailsById" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateDetails">
+      <soap:operation soapAction="http://tempuri.org/UpdateDetails" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Delete">
+      <soap:operation soapAction="http://tempuri.org/Delete" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="IncomeRecordSoap12" type="tns:IncomeRecordSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Add">
+      <soap12:operation soapAction="http://tempuri.org/Add" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDetails">
+      <soap12:operation soapAction="http://tempuri.org/GetDetails" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDetailsById">
+      <soap12:operation soapAction="http://tempuri.org/GetDetailsById" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateDetails">
+      <soap12:operation soapAction="http://tempuri.org/UpdateDetails" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Delete">
+      <soap12:operation soapAction="http://tempuri.org/Delete" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="IncomeRecordHttpGet" type="tns:IncomeRecordHttpGet">
+    <http:binding verb="GET" />
+    <wsdl:operation name="GetDetails">
+      <http:operation location="/GetDetails" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDetailsById">
+      <http:operation location="/GetDetailsById" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Delete">
+      <http:operation location="/Delete" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="IncomeRecordHttpPost" type="tns:IncomeRecordHttpPost">
+    <http:binding verb="POST" />
+    <wsdl:operation name="GetDetails">
+      <http:operation location="/GetDetails" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDetailsById">
+      <http:operation location="/GetDetailsById" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Delete">
+      <http:operation location="/Delete" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="IncomeRecord">
+    <wsdl:port name="IncomeRecordSoap" binding="tns:IncomeRecordSoap">
+      <soap:address location="http://pj1ws.azurewebsites.net/IncomeRecord.asmx" />
+    </wsdl:port>
+    <wsdl:port name="IncomeRecordSoap12" binding="tns:IncomeRecordSoap12">
+      <soap12:address location="http://pj1ws.azurewebsites.net/IncomeRecord.asmx" />
+    </wsdl:port>
+    <wsdl:port name="IncomeRecordHttpGet" binding="tns:IncomeRecordHttpGet">
+      <http:address location="http://pj1ws.azurewebsites.net/IncomeRecord.asmx" />
+    </wsdl:port>
+    <wsdl:port name="IncomeRecordHttpPost" binding="tns:IncomeRecordHttpPost">
+      <http:address location="http://pj1ws.azurewebsites.net/IncomeRecord.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

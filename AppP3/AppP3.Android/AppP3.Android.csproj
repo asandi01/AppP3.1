@@ -209,6 +209,7 @@
     <AndroidResource Include="Resources\drawable\savebutton.png" />
     <AndroidResource Include="Resources\drawable\submit_btn.png" />
     <AndroidResource Include="Resources\drawable\delete.png" />
+    <AndroidResource Include="Resources\drawable\recurrence.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

@@ -32,6 +32,15 @@
             </Image.GestureRecognizers>
         </Image>
 
+        <Label Text="Recurrencia/Recurence" />
+        <Image Source="recurrence.png">
+            <Image.GestureRecognizers>
+                <TapGestureRecognizer
+                Tapped="OnImageRecurence"
+                NumberOfTapsRequired="1" />
+            </Image.GestureRecognizers>
+        </Image>
+
     </StackLayout>
 
 

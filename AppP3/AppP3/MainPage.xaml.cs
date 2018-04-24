@@ -26,6 +26,14 @@ namespace AppP3 {
                 throw ex;
             }
         }
+        
+        void OnImageRecurence(object sender, EventArgs args) {
+            try {
+                Navigation.PushModalAsync(new RecurrenceTypeList());
+            } catch (Exception ex) {
+                throw ex;
+            }
+        }
 
     }
 }

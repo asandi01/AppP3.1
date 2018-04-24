@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AppP3.IncomeRecordEdit">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="Editar"/>
+            <Entry x:Name="id" IsVisible="False"/>
+
+            <Label Text="Detail" />
+            <Entry x:Name="detail" Placeholder="Detail" />
+
+            <Label Text="Amount" />
+            <Entry x:Name="amount" Placeholder="Amount" />
+
+            <Label Text="Payment date" />
+            <Entry x:Name="paymentDate" Placeholder="Payment date: 01/01/2018" />
+
+
+            <Image Source="savebutton.png">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer
+                        Tapped="OnSubmitData"
+                        NumberOfTapsRequired="1"/>
+                </Image.GestureRecognizers>
+            </Image>
+
+            <Image Source="delete.png">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer
+                        Tapped="OnDelete"
+                        NumberOfTapsRequired="1"/>
+                </Image.GestureRecognizers>
+            </Image>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -23,7 +23,7 @@ namespace AppP3 {
             //listPayment = results.Cast<PaymentRecordModel>();
 
             foreach (var item in results) {
-                listPayment.Add(item.id + " => " + item.detail + " " + item.amount);
+                listPayment.Add(item.id + " => " + item.detail + " $" + item.amount);
             }
 
             Device.BeginInvokeOnMainThread(() => {

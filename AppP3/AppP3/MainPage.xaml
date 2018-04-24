@@ -4,21 +4,33 @@
              xmlns:local="clr-namespace:AppP3"
              x:Class="AppP3.MainPage">
     <StackLayout>
-        <Label Text="Detail" />
+        <!--<Label Text="Detail" />
         <Entry x:Name="detail" Placeholder="Detail" />
         <Label Text="Amount" />
         <Entry x:Name="amount" Placeholder="Amount" />
         <Label x:Name="messageLabel" Text="" />
 
-        <Image Source="icon.png">
+        <ListView x:Name="lst" ItemSelected="OnItemSelected"></ListView>-->
+
+        <Label Text="App desarrollada por: Albin Sandi G." />
+
+        <Label Text="Pagos/Payment" />
+        <Image Source="payment.png" x:Name="paymentImage">
             <Image.GestureRecognizers>
                 <TapGestureRecognizer
-                Tapped="OnImageNameTapped"
+                Tapped="OnImagePayment"
                 NumberOfTapsRequired="1" />
             </Image.GestureRecognizers>
         </Image>
 
-        <ListView x:Name="lst" ItemSelected="OnItemSelected"></ListView>
+        <Label Text="Salario/Income" />
+        <Image Source="salary.png">
+            <Image.GestureRecognizers>
+                <TapGestureRecognizer
+                Tapped="OnImagePayment"
+                NumberOfTapsRequired="1" />
+            </Image.GestureRecognizers>
+        </Image>
 
     </StackLayout>
 

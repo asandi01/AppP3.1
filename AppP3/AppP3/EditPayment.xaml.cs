@@ -59,12 +59,42 @@ namespace AppP3 {
                 throw ex;
             }
         }
+
         private async void wsPaymentUpdateCompleted(object sender, ServiceReference2.UpdateDetailsCompletedEventArgs e) {
+            var payment = e.Result; 
+            Device.BeginInvokeOnMainThread(() => {
+                if (payment) {
+                    Navigation.PushModalAsync(new PaymentRecordList());
+                } else {
+                    DisplayAlert("Error", "Ocurrio un error", "Ok");  
+                }
+            });
+        }
+
+        async void OnDelete(object sender, EventArgs args) {
+            try {
+
+                ServiceReference2.PaymentRecordModel payment = new ServiceReference2.PaymentRecordModel();
+
+                payment.id = Int32.Parse(id.Text); 
+                var wsPayment = new ServiceReference2.PaymentRecordSoapClient();
+                wsPayment.DeleteAsync(payment.id);                             
+                wsPayment.DeleteCompleted += wsPaymentDeleteCompleted;
+
+            } catch (Exception ex) {
+                throw ex;
+            }
+        }
+                                                                                                                           
+        private async void wsPaymentDeleteCompleted(object sender, ServiceReference2.DeleteCompletedEventArgs e) {
             var payment = e.Result;
             Device.BeginInvokeOnMainThread(() => {
-                DisplayAlert("Success", "Se actualizó", "Ok");
+                if (payment) {
+                    Navigation.PushModalAsync(new PaymentRecordList());
+                } else {
+                    DisplayAlert("Error", "Ocurrio un error", "Ok");
+                }
             });
-
         }
     }
 }

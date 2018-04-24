@@ -35,6 +35,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="AddPayment.xaml.cs">
+      <DependentUpon>AddPayment.xaml</DependentUpon>
+    </Compile>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
@@ -45,6 +48,9 @@
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Model\PaymentRecordModel.cs" />
+    <Compile Include="PaymentRecordList.xaml.cs">
+      <DependentUpon>PaymentRecordList.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RestClient.cs" />
     <Compile Include="Service References\ServiceReference2\Reference.cs">
@@ -98,7 +104,7 @@
     <None Include="Service References\ServiceReference2\PaymentRecord.wsdl" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="icon.png" />
+    <AndroidResource Include="images\icon.png" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
@@ -128,7 +134,26 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="submit_btn.png" />
+    <AndroidResource Include="images\addbutton.png" />
+    <AndroidResource Include="images\payment.png" />
+    <AndroidResource Include="images\salary.png" />
+    <AndroidResource Include="images\savebutton.png" />
+    <AndroidResource Include="images\submit_btn.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="PaymentRecordList.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="AddPayment.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="images\delete.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="..\..\packages\Xamarin.Forms.2.5.1.444934\build\portable-win+net45+wp80+win81+wpa81\Xamarin.Forms.targets" Condition="Exists('..\..\packages\Xamarin.Forms.2.5.1.444934\build\portable-win+net45+wp80+win81+wpa81\Xamarin.Forms.targets')" />

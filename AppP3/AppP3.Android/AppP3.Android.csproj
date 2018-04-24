@@ -187,6 +187,29 @@
       <Name>AppP3</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\drawable-hdpi\addbutton.png" />
+    <Content Include="Resources\drawable-hdpi\payment.png" />
+    <Content Include="Resources\drawable-hdpi\salary.png" />
+    <Content Include="Resources\drawable-hdpi\savebutton.png" />
+    <Content Include="Resources\drawable-hdpi\submit_btn.png" />
+    <Content Include="Resources\drawable-xhdpi\addbutton.png" />
+    <Content Include="Resources\drawable-xhdpi\payment.png" />
+    <Content Include="Resources\drawable-xhdpi\salary.png" />
+    <Content Include="Resources\drawable-xhdpi\savebutton.png" />
+    <Content Include="Resources\drawable-xhdpi\submit_btn.png" />
+    <Content Include="Resources\drawable-xxhdpi\addbutton.png" />
+    <Content Include="Resources\drawable-xxhdpi\payment.png" />
+    <Content Include="Resources\drawable-xxhdpi\salary.png" />
+    <Content Include="Resources\drawable-xxhdpi\savebutton.png" />
+    <Content Include="Resources\drawable-xxhdpi\submit_btn.png" />
+    <AndroidResource Include="Resources\drawable\addbutton.png" />
+    <AndroidResource Include="Resources\drawable\payment.png" />
+    <AndroidResource Include="Resources\drawable\salary.png" />
+    <AndroidResource Include="Resources\drawable\savebutton.png" />
+    <AndroidResource Include="Resources\drawable\submit_btn.png" />
+    <AndroidResource Include="Resources\drawable\delete.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

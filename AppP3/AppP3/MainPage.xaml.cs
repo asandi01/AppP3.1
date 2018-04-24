@@ -6,102 +6,23 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 
 namespace AppP3 {
-    public partial class MainPage : ContentPage {                                                  
-        List<string> listPayment = new List<string>();
+    public partial class MainPage : ContentPage {       
         public MainPage() {
-            InitializeComponent();                                                    
-            var wsPayment = new ServiceReference2.PaymentRecordSoapClient();
-            wsPayment.GetDetailsAsync();
-            wsPayment.GetDetailsCompleted += wsPaymentCompleted;
+            InitializeComponent();
+            paymentImage.Source = "/images/payment.png";
         }
-
-
-        protected async override void OnAppearing() {
-            base.OnAppearing();   
-        }
-            
-
-        private async void wsPaymentCompleted(object sender, ServiceReference2.GetDetailsCompletedEventArgs e) {
-            var results = e.Result;
-            //listPayment = results.Cast<PaymentRecordModel>();
-
-            foreach (var item in results) { 
-                listPayment.Add(item.id +" => " +item.detail + " " + item.amount);
-            }
-
-            Device.BeginInvokeOnMainThread(() => {
-                lst.ItemsSource = listPayment;    
-            });
- 
-
-        }          
-
-        async void OnAddItemClicked(object sender, EventArgs e) {    
-        }       
-
-        async void OnItemSelected(object sender, SelectedItemChangedEventArgs e) {
-            string itemSelected = e.SelectedItem.ToString();
-            string[] id = itemSelected.Split(' ');
-
-            int idSelected = Int32.Parse(id[0]);
-            await Navigation.PushModalAsync(new EditPayment(idSelected));
-            //await Navigation.PushAsync(EditPayment);
-        }
-
-
-        Label label;
-        int clickTotal = 0;
-
-        /*public MainPage() {
-            Label header = new Label {
-                Text = "Button",
-                Font = Font.BoldSystemFontOfSize(50),
-                HorizontalOptions = LayoutOptions.Center
-            };
-
-            Button button = new Button {
-                Text = "Click Me!",
-                Font = Font.SystemFontOfSize(NamedSize.Large),
-                BorderWidth = 1,
-                HorizontalOptions = LayoutOptions.Center,
-                VerticalOptions = LayoutOptions.CenterAndExpand
-            };
-            button.Clicked += OnButtonClicked; 
-                    
-            label = new Label {
-                Text = "0 button clicks",
-                Font = Font.SystemFontOfSize(NamedSize.Large),
-                HorizontalOptions = LayoutOptions.Center,
-                VerticalOptions = LayoutOptions.CenterAndExpand
-            };
-
-            // Accomodate iPhone status bar.
-            this.Padding = new Thickness(10, Device.OnPlatform(20, 0, 0), 10, 5);
-
-            // Build the page.
-            this.Content = new StackLayout {
-                Children =
-                {
-                    header,
-                    button,
-                    label
-                }
-            };
+                  
+        /*async void OnPayment(object sender, SelectedItemChangedEventArgs e) {       
+            await Navigation.PushModalAsync(new PaymentRecordList());
         } */
 
-        void OnButtonClicked(object sender, EventArgs e) {
-            clickTotal += 1;
-            detail.Text = String.Format("{0} button click{1}",
-                                       clickTotal, clickTotal == 1 ? "" : "s");
-        }
-
-        void OnImageNameTapped(object sender, EventArgs args) {
+        void OnImagePayment(object sender, EventArgs args) {
             try {
-                clickTotal += 1;
-                detail.Text = String.Format("{0} button click{1}", clickTotal, clickTotal == 1 ? "" : "s");
+                Navigation.PushModalAsync(new PaymentRecordList());
             } catch (Exception ex) {
                 throw ex;
             }
         }
+
     }
 }

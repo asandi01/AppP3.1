@@ -44,6 +44,15 @@
     <Compile Include="EditPayment.xaml.cs">
       <DependentUpon>EditPayment.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ExpenseCategoryAdd.xaml.cs">
+      <DependentUpon>ExpenseCategoryAdd.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ExpenseCategoryEdit.xaml.cs">
+      <DependentUpon>ExpenseCategoryEdit.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ExpenseCategoryList.xaml.cs">
+      <DependentUpon>ExpenseCategoryList.xaml</DependentUpon>
+    </Compile>
     <Compile Include="IncomeRecordAdd.xaml.cs">
       <DependentUpon>IncomeRecordAdd.xaml</DependentUpon>
     </Compile>
@@ -283,6 +292,24 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="ExpenseCategoryList.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="ExpenseCategoryAdd.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="ExpenseCategoryEdit.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="..\..\packages\Xamarin.Forms.2.5.1.444934\build\portable-win+net45+wp80+win81+wpa81\Xamarin.Forms.targets" Condition="Exists('..\..\packages\Xamarin.Forms.2.5.1.444934\build\portable-win+net45+wp80+win81+wpa81\Xamarin.Forms.targets')" />

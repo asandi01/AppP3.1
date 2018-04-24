@@ -34,6 +34,14 @@ namespace AppP3 {
                 throw ex;
             }
         }
+        
+        void OnImageExpense(object sender, EventArgs args) {
+            try {
+                Navigation.PushModalAsync(new ExpenseCategoryList());
+            } catch (Exception ex) {
+                throw ex;
+            }
+        }
 
     }
 }

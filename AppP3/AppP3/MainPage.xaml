@@ -41,6 +41,15 @@
             </Image.GestureRecognizers>
         </Image>
 
+        <Label Text="Expense Category" />
+        <Image Source="category.png">
+            <Image.GestureRecognizers>
+                <TapGestureRecognizer
+                Tapped="OnImageExpense"
+                NumberOfTapsRequired="1" />
+            </Image.GestureRecognizers>
+        </Image>
+
     </StackLayout>
 
 
